@@ -1,6 +1,7 @@
 // @flow
 import * as React from 'react';
 
+import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
@@ -9,12 +10,9 @@ import List from '@ckeditor/ckeditor5-list/src/list';
 import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
+import Link from '@ckeditor/ckeditor5-link/src/link';
 
-import EditorCore from './EditorCore';
-
-type ChangeOpts = {
-  isInitial: boolean,
-};
+import EditorCore, { type ChangeOpts } from './EditorCore';
 
 type Props = {
   value: string,
@@ -25,8 +23,8 @@ type Props = {
 
 export default class CKClassicBasic extends React.Component<Props> {
   static defaultProps = {
-    toolbar: ['bold', 'italic', 'numberedList', 'bulletedList', 'headings', 'blockQuote'],
-    plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote],
+    toolbar: ['bold', 'italic', 'link', 'numberedList', 'bulletedList', 'blockQuote', 'headings'],
+    plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote, Link],
   };
 
   editor: Object
@@ -45,6 +43,7 @@ export default class CKClassicBasic extends React.Component<Props> {
   render() {
     return (
       <EditorCore
+        editorClass={ClassicEditor}
         toolbar={this.props.toolbar}
         plugins={this.props.plugins}
         ref={(inst: ?EditorCore) => {

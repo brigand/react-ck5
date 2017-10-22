@@ -1,4 +1,8 @@
 {
-  "presets": ["latest", "stage-3", "react"],
+  "presets": [
+    ["latest", {"es2015": false}],
+    "stage-3",
+    "react"
+  ],
   "plugins": ["transform-class-properties"]
 }

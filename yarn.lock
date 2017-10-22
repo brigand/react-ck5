@@ -86,6 +86,15 @@
     "@ckeditor/ckeditor5-ui" "^1.0.0-alpha.1"
     "@ckeditor/ckeditor5-utils" "^1.0.0-alpha.1"
 
+"@ckeditor/ckeditor5-link@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-link/-/ckeditor5-link-1.0.0-alpha.1.tgz#f7cb6c57304ab1eadc279d6e59224c4133e8961e"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-engine" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-theme-lark" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-ui" "^1.0.0-alpha.1"
+
 "@ckeditor/ckeditor5-list@^1.0.0-alpha.1":
   version "1.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-list/-/ckeditor5-list-1.0.0-alpha.1.tgz#1b4a2c42a4e94ef28b580b6361806983789394f8"

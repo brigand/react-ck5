@@ -1,9 +1,7 @@
 // @flow
 import * as React from 'react';
 
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
-
-type ChangeOpts = {
+export type ChangeOpts = {
   isInitial: boolean,
 };
 
@@ -12,6 +10,8 @@ type Props = {
   onChange: (value: string, opts: ChangeOpts) => mixed,
   plugins: Array<any>,
   toolbar: Array<any>,
+  editorClass: typeof Object,
+  children?: ?React.Node,
 };
 
 export default class CKEditorCore extends React.Component<Props> {
@@ -50,7 +50,7 @@ export default class CKEditorCore extends React.Component<Props> {
   componentDidMount() {
     if (!this.el) return;
 
-    ClassicEditor.create(this.el, {
+    this.props.editorClass.create(this.el, {
       plugins: this.getPlugins(),
       toolbar: this.getToolbar(),
     })
@@ -92,7 +92,10 @@ export default class CKEditorCore extends React.Component<Props> {
   render() {
     return (
       <div>
-        <div ref={(el: ?HTMLElement) => { this.el = el; }} />
+        {this.props.children}
+        <div>
+          <div ref={(el: ?HTMLElement) => { this.el = el; }} />
+        </div>
       </div>
     );
   }

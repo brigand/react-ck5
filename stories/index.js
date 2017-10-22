@@ -5,6 +5,8 @@ import { storiesOf } from '@storybook/react';
 // import { linkTo } from '@storybook/addon-links';
 
 import ClassicBasic from '../src/ClassicBasic';
+import CustomEditor from '../src/CustomEditor';
+import * as Ck5 from '../src/elements';
 
 const makeEditorWrapper = (C, initial, value = 'value', onChange = 'onChange') => (
   class EditorWrapper extends React.Component {
@@ -46,3 +48,27 @@ const makeEditorWrapper = (C, initial, value = 'value', onChange = 'onChange') =
 const SCClassicBasic1 = makeEditorWrapper(ClassicBasic, 'test');
 storiesOf('ClassicBasic')
   .add('Normal controlled', () => <SCClassicBasic1 />);
+
+const CustomEditor1 = makeEditorWrapper(CustomEditor, 'test');
+storiesOf('CustomEditor')
+  .add('Basic', () => (
+    <CustomEditor1>
+      <Ck5.Toolbar>
+        <Ck5.Button command="bold">
+          {({ active }) => (
+            <button style={active ? { background: 'black', color: 'white' } : null}>
+              B
+            </button>
+          )}
+        </Ck5.Button>
+        <span style={{ display: 'inline-block', marginRight: '0.4em' }} />
+        <Ck5.Button command="italic">
+          {({ active }) => (
+            <button style={active ? { background: 'black', color: 'white' } : null}>
+              I
+            </button>
+          )}
+        </Ck5.Button>
+      </Ck5.Toolbar>
+    </CustomEditor1>
+  ));
