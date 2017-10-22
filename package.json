@@ -29,9 +29,12 @@
   },
   "homepage": "https://github.com/brigand/react-ck5#readme",
   "dependencies": {
+    "@ckeditor/ckeditor5-autoformat": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-basic-styles": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-block-quote": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-editor-classic": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-essentials": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-heading": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-list": "^1.0.0-alpha.1",
     "@ckeditor/ckeditor5-paragraph": "^1.0.0-alpha.1"
   },

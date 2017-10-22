@@ -7,6 +7,9 @@ import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
 import Italic from '@ckeditor/ckeditor5-basic-styles/src/italic';
 import List from '@ckeditor/ckeditor5-list/src/list';
+import Heading from '@ckeditor/ckeditor5-heading/src/heading';
+import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
+import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 
 type ChangeOpts = {
   isInitial: boolean,
@@ -19,29 +22,49 @@ type Props = {
 };
 
 export default class CKClassicBasic extends React.Component<Props> {
-  static defaultToolbar = ['bold', 'italic', 'numberedList', 'bulletedList'];
+  static defaultToolbar = ['bold', 'italic', 'numberedList', 'bulletedList', 'headings', 'blockQuote'];
 
   editor: Object
   el: ?HTMLElement
   el = null;
-  editorPromise: Promise<Object>
+  public: {
+    editor: ?Object,
+    editorPromise: Promise<Object>,
+  }
+
+  editorPromiseResolve: (value: Object) => mixed;
+  editorPromiseReject: (value: Object) => mixed;
+
+  constructor(props: Props) {
+    super(props);
+    this.public = {
+      editor: null,
+      editorPromise: new Promise((resolve, reject) => {
+        this.editorPromiseResolve = resolve;
+        this.editorPromiseReject = reject;
+      }),
+    };
+  }
+
   ignoreUpdatesUntil = 0;
 
   componentDidMount() {
     if (!this.el) return;
 
-    this.editorPromise = ClassicEditor.create(this.el, {
-      plugins: [Essentials, Paragraph, Bold, Italic, List],
+    ClassicEditor.create(this.el, {
+      plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote],
       toolbar: this.props.buttonTypes || CKClassicBasic.defaultToolbar,
     })
       .then((editor) => {
         this.editor = editor;
-        window.top.editor = editor;
+        this.public.editor = editor;
         this.initEditor();
+        this.editorPromiseResolve(editor);
         return editor;
       })
       .catch((err) => {
         console.error(`Component CKClassicBasic failed to initialize`, err);
+        this.editorPromiseReject(err);
       });
   }
 
@@ -53,7 +76,6 @@ export default class CKClassicBasic extends React.Component<Props> {
       this.props.onChange(initialData, { isInitial: true });
     }
     this.editor.document.on('change', () => {
-      console.log(this.editor.data);
       this.props.onChange(this.editor.getData(), { isInitial: false });
     });
   }

@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@ckeditor/ckeditor5-autoformat@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-autoformat/-/ckeditor5-autoformat-1.0.0-alpha.1.tgz#7133a00854d8baa1dfd82c7f58da812a6b68df6a"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-engine" "^1.0.0-alpha.1"
+
 "@ckeditor/ckeditor5-basic-styles@^1.0.0-alpha.1":
   version "1.0.0-alpha.1"
   resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-basic-styles/-/ckeditor5-basic-styles-1.0.0-alpha.1.tgz#0b12247f27dee0f8397f76c52e17cfa9dd646291"
@@ -10,6 +17,15 @@
     "@ckeditor/ckeditor5-engine" "^1.0.0-alpha.1"
     "@ckeditor/ckeditor5-theme-lark" "^1.0.0-alpha.1"
     "@ckeditor/ckeditor5-ui" "^1.0.0-alpha.1"
+
+"@ckeditor/ckeditor5-block-quote@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-block-quote/-/ckeditor5-block-quote-1.0.0-alpha.1.tgz#3d31e46c0a90f63a6722ba427bd69e47935c9eba"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-engine" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-ui" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-utils" "^1.0.0-alpha.1"
 
 "@ckeditor/ckeditor5-clipboard@^1.0.0-alpha.1":
   version "1.0.0-alpha.1"
@@ -58,6 +74,17 @@
     "@ckeditor/ckeditor5-enter" "^1.0.0-alpha.1"
     "@ckeditor/ckeditor5-typing" "^1.0.0-alpha.1"
     "@ckeditor/ckeditor5-undo" "^1.0.0-alpha.1"
+
+"@ckeditor/ckeditor5-heading@^1.0.0-alpha.1":
+  version "1.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/@ckeditor/ckeditor5-heading/-/ckeditor5-heading-1.0.0-alpha.1.tgz#c7f0c062b969e8e036ddc5c3bdb2b45617bdd303"
+  dependencies:
+    "@ckeditor/ckeditor5-core" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-engine" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-paragraph" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-theme-lark" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-ui" "^1.0.0-alpha.1"
+    "@ckeditor/ckeditor5-utils" "^1.0.0-alpha.1"
 
 "@ckeditor/ckeditor5-list@^1.0.0-alpha.1":
   version "1.0.0-alpha.1"
