@@ -1,0 +1,63 @@
+{
+  "name": "react-ck5",
+  "version": "0.1.0",
+  "description": "react wrapper for ckeditor5",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "jest",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brigand/react-ck5.git"
+  },
+  "keywords": [
+    "ck5",
+    "ckeditor5",
+    "react",
+    "react-component",
+    "wysiwyg",
+    "editor"
+  ],
+  "author": "Frankie Bagnardi <f.bagnardi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brigand/react-ck5/issues"
+  },
+  "homepage": "https://github.com/brigand/react-ck5#readme",
+  "dependencies": {
+    "@ckeditor/ckeditor5-basic-styles": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-editor-classic": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-essentials": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-list": "^1.0.0-alpha.1",
+    "@ckeditor/ckeditor5-paragraph": "^1.0.0-alpha.1"
+  },
+  "devDependencies": {
+    "@storybook/addon-actions": "^3.2.13",
+    "@storybook/addon-links": "^3.2.13",
+    "@storybook/react": "^3.2.13",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.0.1",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "css-loader": "^0.28.7",
+    "eslint": "^4.9.0",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.4.0",
+    "file-loader": "^1.1.5",
+    "flow-bin": "^0.57.3",
+    "node-sass": "^4.5.3",
+    "raw-loader": "^0.5.1",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "webpack": "^3.8.1"
+  }
+}
