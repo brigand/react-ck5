@@ -7,6 +7,7 @@ module.exports = {
     "react/sort-comp": 0,
     "import/no-extraneous-dependencies": 0,
     "no-console": 0,
+    "max-len": [2, 120],
   },
   env: {
     browser: true,

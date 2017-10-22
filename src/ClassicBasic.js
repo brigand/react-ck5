@@ -1,7 +1,6 @@
 // @flow
 import * as React from 'react';
 
-import ClassicEditor from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Paragraph from '@ckeditor/ckeditor5-paragraph/src/paragraph';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
@@ -11,6 +10,8 @@ import Heading from '@ckeditor/ckeditor5-heading/src/heading';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 
+import EditorCore from './EditorCore';
+
 type ChangeOpts = {
   isInitial: boolean,
 };
@@ -18,83 +19,42 @@ type ChangeOpts = {
 type Props = {
   value: string,
   onChange: (value: string, opts: ChangeOpts) => mixed,
-  buttonTypes: Array<string>,
+  toolbar: Array<string>,
+  plugins: Array<any>,
 };
 
 export default class CKClassicBasic extends React.Component<Props> {
-  static defaultToolbar = ['bold', 'italic', 'numberedList', 'bulletedList', 'headings', 'blockQuote'];
+  static defaultProps = {
+    toolbar: ['bold', 'italic', 'numberedList', 'bulletedList', 'headings', 'blockQuote'],
+    plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote],
+  };
 
   editor: Object
-  el: ?HTMLElement
-  el = null;
+  editorPromise: Promise<Object>
   public: {
     editor: ?Object,
     editorPromise: Promise<Object>,
   }
 
-  editorPromiseResolve: (value: Object) => mixed;
-  editorPromiseReject: (value: Object) => mixed;
-
-  constructor(props: Props) {
-    super(props);
-    this.public = {
-      editor: null,
-      editorPromise: new Promise((resolve, reject) => {
-        this.editorPromiseResolve = resolve;
-        this.editorPromiseReject = reject;
-      }),
-    };
-  }
-
-  ignoreUpdatesUntil = 0;
-
   componentDidMount() {
-    if (!this.el) return;
-
-    ClassicEditor.create(this.el, {
-      plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote],
-      toolbar: this.props.buttonTypes || CKClassicBasic.defaultToolbar,
-    })
-      .then((editor) => {
-        this.editor = editor;
-        this.public.editor = editor;
-        this.initEditor();
-        this.editorPromiseResolve(editor);
-        return editor;
-      })
-      .catch((err) => {
-        console.error(`Component CKClassicBasic failed to initialize`, err);
-        this.editorPromiseReject(err);
-      });
-  }
-
-  initEditor() {
-    this.editor.setData(this.props.value);
-    const initialData = this.editor.getData();
-    if (initialData !== this.props.value) {
-      if (this.ignoreUpdatesUntil > Date.now()) return;
-      this.props.onChange(initialData, { isInitial: true });
-    }
-    this.editor.document.on('change', () => {
-      this.props.onChange(this.editor.getData(), { isInitial: false });
+    this.public.editorPromise.then((editor) => {
+      this.editor = editor;
     });
-  }
-
-  componentDidUpdate(prevProps: Props) {
-    if (prevProps.value !== this.props.value) {
-      const current = this.editor.getData();
-      if (current !== this.props.value) {
-        this.ignoreUpdatesUntil = Date.now() + 15;
-        this.editor.setData(this.props.value);
-      }
-    }
   }
 
   render() {
     return (
-      <div>
-        <div ref={(el: ?HTMLElement) => { this.el = el; }} />
-      </div>
+      <EditorCore
+        toolbar={this.props.toolbar}
+        plugins={this.props.plugins}
+        ref={(inst: ?EditorCore) => {
+          if (inst) {
+            this.public = inst.public;
+          }
+        }}
+        value={this.props.value}
+        onChange={this.props.onChange}
+      />
     );
   }
 }

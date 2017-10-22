@@ -6,8 +6,8 @@ import { storiesOf } from '@storybook/react';
 
 import ClassicBasic from '../src/ClassicBasic';
 
-const stateContainer = (C, initial, value = 'value', onChange = 'onChange') => (
-  class StateContainer extends React.Component {
+const makeEditorWrapper = (C, initial, value = 'value', onChange = 'onChange') => (
+  class EditorWrapper extends React.Component {
     constructor(props) { super(props); this.state = { x: initial }; }
     render() {
       const ref = (inst) => {
@@ -43,6 +43,6 @@ const stateContainer = (C, initial, value = 'value', onChange = 'onChange') => (
   }
 );
 
-const SCClassicBasic1 = stateContainer(ClassicBasic, 'test');
+const SCClassicBasic1 = makeEditorWrapper(ClassicBasic, 'test');
 storiesOf('ClassicBasic')
   .add('Normal controlled', () => <SCClassicBasic1 />);
