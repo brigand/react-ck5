@@ -57,9 +57,50 @@ It's recommended that you don't ignore the initial update, however you may wish 
 
 `onChange` always receives an event object as the second argument, however currently it only has the one property mentioned above which will be `true` or `false`.
 
+
 ## CustomEditor
 
 Smaller bundle size, more customization options, fully controlled editor state.
 
 TODO: write docs once api stabilizes.
+
+## props.editorState and props.onStateChange
+
+All editors also support two props for controlling the state (other than the value) of the editor. Usually you'll pass `null` for the `editorState` prop on the initial render, and then your `onStateChange` will be called with all of the state properties.
+
+Manipulating the object is a pain due to the nesting; open to ideas for a better api.
+
+```jsx
+  state = { editorState: null }
+  render() {
+    return (
+      <div>
+        <ClassicBasic
+          value={/* ... */}
+          onChange={/* ... */}
+          editorState={this.state.editorState}
+        />
+        <button
+          // prevent editor losing focus
+          onMouseDown={e => e.preventDefault()}
+          onClick={() => {
+            this.setState(s => ({
+              editorState: {
+                ...s.editorState,
+                bold: {
+                  ...s.editorState.bold,
+                  value: !s.editorState.bold.value,
+                },
+              }
+            }));
+          }}
+        >
+          Toggle bold
+        </button>
+      </div>
+    );
+  }
+```
+
+When the button is clicked, bold will be toggled in the editor. Aside from `value`, all of the commands take an `isEnabled` property which will disable the functionality, and in the ClassicBasic editor, any UI controls for that feature.
 
