@@ -3,7 +3,7 @@ import { update } from 'object-path-immutable';
 import { storiesOf } from '@storybook/react';
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
-
+import Btn from './Btn';
 import ClassicBasic from '../src/ClassicBasic';
 import CustomEditor from '../src/CustomEditor';
 
@@ -34,21 +34,21 @@ const makeEditorWrapper = (C, initial) => (
       return (
         <div>
           {el}
-          <button
+          <Btn
             onClick={() => this.setState({
               x: `<p>${Math.random().toString().slice(2).replace(/^(.{3})(.{3})/g, '$1<strong>$2</strong>')}</p>`,
             })}
           >
             Random value
-          </button>
-          <button
+          </Btn>
+          <Btn
             onMouseDown={e => e.preventDefault()}
             onClick={() => {
               this.setState(s => update(s, 'editorState.bold.value', value => !value));
             }}
           >
             Toggle Bold
-          </button>
+          </Btn>
           <pre>
             {typeof this.state.x === 'string'
               ? this.state.x
@@ -71,7 +71,10 @@ storiesOf('ClassicBasic')
 const CustomEditor1 = makeEditorWrapper(CustomEditor, 'test');
 storiesOf('CustomEditor')
   .add('Basic', () => (
-    <CustomEditor1>
-      Test Button
+    <CustomEditor1
+      config={{
+      }}
+    >
+      My Editor
     </CustomEditor1>
   ));

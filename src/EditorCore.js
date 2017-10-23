@@ -30,6 +30,7 @@ export type EditorCoreProps = {
   value: string,
   onChange: (value: string, opts: ChangeOpts) => mixed,
   config: EditorConfig,
+  // $FlowFixMe
   editorState: ?DynamicEditorState,
   onStateChange?: (state: DynamicEditorState) => mixed,
   children?: ?React.Node,

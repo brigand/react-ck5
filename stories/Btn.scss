@@ -1,0 +1,28 @@
+.DemoButton {
+  padding: 0.6em 0.7em;
+  margin: 0.5em; // because laziness
+
+  height: auto;
+  border: 2px solid hotpink;
+  color: darken(hotpink, 25%);
+  background: white;
+  border-radius: 3px;
+  overflow: hidden;
+  cursor: pointer;
+
+  &, &:active, &:focus {
+    outline: none;
+  }
+}
+
+.DemoButton:hover {
+  border-color: hotpink;
+  background: hotpink;
+  color: white;
+  box-shadow: inset 0 0 1px 2px white;
+}
+
+.DemoButton:active, .DemoButton:active:hover {
+  background: darken(hotpink, 25%);
+  border-color: darken(hotpink, 25%);
+}
