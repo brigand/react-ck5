@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { update } from 'object-path-immutable';
 import { storiesOf } from '@storybook/react';
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
@@ -44,16 +44,7 @@ const makeEditorWrapper = (C, initial) => (
           <button
             onMouseDown={e => e.preventDefault()}
             onClick={() => {
-              if (!this.state.editorState) return;
-              this.setState({
-                editorState: {
-                  ...this.state.editorState,
-                  bold: {
-                    isEnabled: true,
-                    value: !this.state.editorState.bold.value,
-                  },
-                },
-              });
+              this.setState(s => update(s, 'editorState.bold.value', value => !value));
             }}
           >
             Toggle Bold

@@ -68,7 +68,13 @@ TODO: write docs once api stabilizes.
 
 All editors also support two props for controlling the state (other than the value) of the editor. Usually you'll pass `null` for the `editorState` prop on the initial render, and then your `onStateChange` will be called with all of the state properties.
 
-Manipulating the object is a pain due to the nesting; open to ideas for a better api.
+We'll use a [small helper] to make the deep update syntax nicer.
+
+[small helper]: https://github.com/mariocasciaro/object-path-immutable
+
+```js
+import { update } from 'object-path-immutable';
+```
 
 ```jsx
   state = { editorState: null }
@@ -84,15 +90,7 @@ Manipulating the object is a pain due to the nesting; open to ideas for a better
           // prevent editor losing focus
           onMouseDown={e => e.preventDefault()}
           onClick={() => {
-            this.setState(s => ({
-              editorState: {
-                ...s.editorState,
-                bold: {
-                  ...s.editorState.bold,
-                  value: !s.editorState.bold.value,
-                },
-              }
-            }));
+            this.setState(s => update(s, 'editorState.bold.value', value => !value));
           }}
         >
           Toggle bold
@@ -103,4 +101,3 @@ Manipulating the object is a pain due to the nesting; open to ideas for a better
 ```
 
 When the button is clicked, bold will be toggled in the editor. Aside from `value`, all of the commands take an `isEnabled` property which will disable the functionality, and in the ClassicBasic editor, any UI controls for that feature.
-

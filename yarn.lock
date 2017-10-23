@@ -4367,6 +4367,10 @@ object-keys@^1.0.8:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/object-keys/-/object-keys-1.0.11.tgz#c54601778ad560f1142ce0e01bcca8b56d13426d"
 
+object-path-immutable@^0.5.2:
+  version "0.5.2"
+  resolved "https://registry.yarnpkg.com/object-path-immutable/-/object-path-immutable-0.5.2.tgz#fb7041de26598db99aacccbc1a9c03fd1187269e"
+
 object.entries@^1.0.4:
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/object.entries/-/object.entries-1.0.4.tgz#1bf9a4dd2288f5b33f3a993d257661f05d161a5f"
