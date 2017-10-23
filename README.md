@@ -85,6 +85,7 @@ import { update } from 'object-path-immutable';
           value={/* ... */}
           onChange={/* ... */}
           editorState={this.state.editorState}
+          onStateChange={editorState => this.setState({ editorState })}
         />
         <button
           // prevent editor losing focus
