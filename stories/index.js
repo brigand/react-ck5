@@ -57,7 +57,7 @@ storiesOf('CustomEditor')
         <Ck5.Button command="bold">
           {({ active }) => (
             <button style={active ? { background: 'black', color: 'white' } : null}>
-              B
+              Bold
             </button>
           )}
         </Ck5.Button>
@@ -65,7 +65,7 @@ storiesOf('CustomEditor')
         <Ck5.Button command="italic">
           {({ active }) => (
             <button style={active ? { background: 'black', color: 'white' } : null}>
-              I
+              Italics
             </button>
           )}
         </Ck5.Button>
