@@ -12,11 +12,11 @@ import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import BlockQuote from '@ckeditor/ckeditor5-block-quote/src/blockquote';
 import Link from '@ckeditor/ckeditor5-link/src/link';
 
-import EditorCore, { type ChangeOpts } from './EditorCore';
+import * as t from './types';
+import EditorCore, { type EditorCoreProps } from './EditorCore';
 
 type Props = {
-  value: string,
-  onChange: (value: string, opts: ChangeOpts) => mixed,
+  ...EditorCoreProps,
   toolbar: Array<string>,
   plugins: Array<any>,
 };
@@ -27,15 +27,15 @@ export default class CKClassicBasic extends React.Component<Props> {
     plugins: [Essentials, Paragraph, Bold, Italic, List, Heading, Autoformat, BlockQuote, Link],
   };
 
-  editor: Object
-  editorPromise: Promise<Object>
+  editor: t.Editor
+  editorPromise: Promise<t.Editor>
   public: {
     editor: ?Object,
     editorPromise: Promise<Object>,
   }
 
   componentDidMount() {
-    this.public.editorPromise.then((editor) => {
+    this.public.editorPromise.then((editor: t.Editor) => {
       this.editor = editor;
     });
   }
@@ -43,16 +43,19 @@ export default class CKClassicBasic extends React.Component<Props> {
   render() {
     return (
       <EditorCore
-        editorClass={ClassicEditor}
-        toolbar={this.props.toolbar}
-        plugins={this.props.plugins}
         ref={(inst: ?EditorCore) => {
           if (inst) {
             this.public = inst.public;
           }
         }}
-        value={this.props.value}
-        onChange={this.props.onChange}
+        editorState={null}
+        {...this.props}
+        config={{
+          ...this.props.config,
+          editorClass: ClassicEditor,
+          toolbar: this.props.toolbar,
+          plugins: this.props.plugins,
+        }}
       />
     );
   }

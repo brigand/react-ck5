@@ -37,6 +37,26 @@ You can pass a custom toolbar. This shows the default:
   toolbar={['bold', 'italic', 'link', 'numberedList', 'bulletedList', 'blockQuote', 'headings']]
 ```
 
+`value` must be a string, but it can be the empty string.
+
+Once the editor is loaded with the initial value if the editor interprets the value differently from the string you passed, `onChange` will be called - even before user interaction. In this special case, the second argument to `onChange` will be an object with the property `isIntial: true`.
+
+```jsx
+<ClassicBasic
+  value={this.state.html}
+  onChange={(html, event) => {
+    if (event.isInitial) {
+      // ignore the initial update
+      return;
+    }
+    this.setState({ html });
+  }}
+```
+
+It's recommended that you don't ignore the initial update, however you may wish to handle it specially, e.g. not setting a 'dirty' flag in state for this update.
+
+`onChange` always receives an event object as the second argument, however currently it only has the one property mentioned above which will be `true` or `false`.
+
 ## CustomEditor
 
 Smaller bundle size, more customization options, fully controlled editor state.

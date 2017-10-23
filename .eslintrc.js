@@ -11,6 +11,7 @@ module.exports = {
     "react/prefer-stateless-function": 0,
     "no-underscore-dangle": 0,
     "react/no-multi-comp": 0,
+    "no-restricted-syntax": 0,
   },
   env: {
     browser: true,
