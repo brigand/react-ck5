@@ -66,17 +66,14 @@ const makeEditorWrapper = (C, initial) => (
   }
 );
 
-const SCClassicBasic1 = makeEditorWrapper(ClassicBasic, 'test');
+const SCClassicBasic1 = makeEditorWrapper(ClassicBasic, '<p><i>Hello</i>, <strong>World</strong>!</p>');
 storiesOf('ClassicBasic')
   .add('Normal controlled', () => <SCClassicBasic1 />);
 
-const CustomEditor1 = makeEditorWrapper(CustomEditor, 'test');
+const CustomEditor1 = makeEditorWrapper(CustomEditor, '<p><i>Hello</i>, <strong>World</strong>!</p>');
 storiesOf('CustomEditor')
   .add('Basic', () => (
-    <CustomEditor1
-      config={{
-      }}
-    >
+    <CustomEditor1>
       My Editor
     </CustomEditor1>
   ));

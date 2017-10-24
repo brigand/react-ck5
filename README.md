@@ -34,7 +34,7 @@ You can pass a custom toolbar. This shows the default:
 
 ```jsx
 <ClassicBasic
-  toolbar={['bold', 'italic', 'link', 'numberedList', 'bulletedList', 'blockQuote', 'headings']]
+  toolbar={['bold', 'italic', 'link', 'numberedList', 'bulletedList', 'blockQuote', 'headings']}
 ```
 
 `value` must be a string, but it can be the empty string.
