@@ -34,6 +34,8 @@ const makeEditorWrapper = (C, initial) => (
       return (
         <div>
           {el}
+          <hr />
+          <span>Generic actions: </span>
           <Btn
             onClick={() => this.setState({
               x: `<p>${Math.random().toString().slice(2).replace(/^(.{3})(.{3})/g, '$1<strong>$2</strong>')}</p>`,

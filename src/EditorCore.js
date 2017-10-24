@@ -146,6 +146,7 @@ export default class CKEditorCore extends React.Component<EditorCoreProps> {
         this.editor = editor;
         this.public.editor = editor;
         this.initEditor();
+        this.bindCommands();
         this.editorPromiseResolve(editor);
         this.maybeDispatchEditorStateUpdate();
         return editor;
