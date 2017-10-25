@@ -1,0 +1,23 @@
+// FullCustomExample
+
+.FCE .ck-editor__editable {
+  height: 20em;
+}
+
+.FCE__Container {
+  width: 40em;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+.FCE__Inner {
+  flex-grow: 1;
+}
+
+.FCE__Toolbar {
+  padding: 0.5em;
+  background: #ededed;
+  margin-right: 4px;
+}

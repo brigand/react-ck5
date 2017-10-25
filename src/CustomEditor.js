@@ -9,6 +9,8 @@ import * as t from './types';
 type Props = {
   ...EditorCoreProps,
   children?: ?React.Node,
+  containerProps?: ?Object,
+  innerProps?: ?Object,
 };
 
 type State = {
@@ -34,11 +36,12 @@ export default class CustomEditor extends React.Component<Props, State> {
   }
 
   render() {
-    const { children, ...props } = this.props;
+    const { children, containerProps, innerProps, ...props } = this.props;
     return (
-      <div>
+      <div {...containerProps}>
         {children}
         <EditorCore
+          containerProps={innerProps}
           ref={(el: ?EditorCore) => {
             if (!el) return;
 

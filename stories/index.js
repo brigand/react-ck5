@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 // import { action } from '@storybook/addon-actions';
 // import { linkTo } from '@storybook/addon-links';
 import Btn from './Btn';
+import FullCustomExample from './FullCustomExample.story';
 import ClassicBasic from '../src/ClassicBasic';
 import CustomEditor from '../src/CustomEditor';
 
@@ -77,3 +78,6 @@ storiesOf('CustomEditor')
       My Editor
     </CustomEditor1>
   ));
+
+storiesOf('FullCustomEditor')
+  .add('Main', () => <FullCustomExample />);

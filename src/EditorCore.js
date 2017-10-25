@@ -7,7 +7,7 @@ export type ChangeOpts = {
   isInitial: boolean,
 };
 
-type EditorState = {
+export type EditorState = {
   bold: boolean,
   italic: boolean,
   ul: boolean,
@@ -17,9 +17,9 @@ type EditorState = {
   mainType: 'paragraph' | 'h1' | 'h2' | 'h3',
 };
 
-type DynamicEditorState = {[key: string]: any} | EditorState;
+export type DynamicEditorState = {[key: string]: any} | EditorState;
 
-type EditorConfig = {
+export type EditorConfig = {
   plugins: Array<any>,
   toolbar: Array<string>,
   editorClass: typeof Object,
@@ -34,6 +34,7 @@ export type EditorCoreProps = {
   editorState: ?DynamicEditorState,
   onStateChange?: (state: DynamicEditorState) => mixed,
   children?: ?React.Node,
+  containerProps?: ?Object,
 };
 
 export default class CKEditorCore extends React.Component<EditorCoreProps> {
@@ -198,13 +199,14 @@ export default class CKEditorCore extends React.Component<EditorCoreProps> {
 
   render() {
     const { editorElement } = this;
+    const { containerProps } = this.props;
     if (typeof this.props.children === 'function') {
       return this.props.children({
         editorElement,
       });
     }
     return (
-      <div>
+      <div {...containerProps}>
         {this.props.children}
         {editorElement}
       </div>

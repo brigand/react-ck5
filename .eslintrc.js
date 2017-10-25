@@ -12,6 +12,7 @@ module.exports = {
     "no-underscore-dangle": 0,
     "react/no-multi-comp": 0,
     "no-restricted-syntax": 0,
+    "react/jsx-no-bind": 0,
   },
   env: {
     browser: true,
