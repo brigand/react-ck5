@@ -1,6 +1,6 @@
 {
   "name": "react-ck5",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "react wrapper for ckeditor5",
   "main": "lib/index.js",
   "scripts": {
